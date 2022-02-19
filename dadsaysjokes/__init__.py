@@ -58,6 +58,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     if response.ok:
         logging.info("SMS sent successfully.")
+    else:
+        logging.info("Error sending SMS. Please check log.")
 
     ## Send joke by email
     smtp_server = "smtp.gmail.com"
