@@ -42,6 +42,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         df = pd.DataFrame(data['data']).sample()
         joke = df['text'].to_string(index=False).replace("\\n", "\n").replace("&amp;", "and")
+        joke = str(joke)
         logging.info("Jokes retrieved successfully.")
     except Exception as e:
         logging.info("Joke failed to copy into DataFrame " + e)
@@ -67,7 +68,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     sender_email = emailSender
     password = gmailPass
     receiver_email = emailRecipient
-    message = f"""Subject: Dadsaysjokes API\n\n{joke.encode()}"""
+    message = f"""Subject: Dadsaysjokes API\n\n{joke}"""
 
     name = False
 
